@@ -25,7 +25,11 @@ type Request struct {
 }
 
 func NewRequest() *Request {
+	// Disable logging output to keep test logs clear
+	gin.SetMode(gin.ReleaseMode)
+
 	return &Request{
+		method:  "GET",
 		router:  gin.New(),
 		headers: make(http.Header),
 		path:    make(map[string]string),
